@@ -1,0 +1,42 @@
+{
+  "profile": "action-ref-v1-jcs-sha256",
+  "version": 1,
+  "spec": "https://vibes-coded.com/for-agents",
+  "note": "Vibes-Coded conformance vectors for action-ref-v1. action_ref = SHA-256(JCS(preimage)) over the frozen 4-field tuple {action_type, agent_id, scope, timestamp}. Cross-verified byte-identical against giskard09/action-ref-conformance. A conformant verifier reproduces PASS on positives and REJECT on negatives (grammar_reject before hashing for non-canonical timestamps; recompute_mismatch otherwise). Both verdicts and every reject reason must be observed.",
+  "reject_reasons": {
+    "grammar_reject": "timestamp is not a canonical RFC 3339 UTC millisecond string before hashing",
+    "recompute_mismatch": "recomputed SHA-256(JCS(tuple)) != claimed action_ref"
+  },
+  "vectors": [
+    {
+      "file": "pos_0001-vibes-baseline.json",
+      "expect": "PASS",
+      "reason": null,
+      "failure_mode": null
+    },
+    {
+      "file": "pos_0002-guarded-transfer.json",
+      "expect": "PASS",
+      "reason": null,
+      "failure_mode": null
+    },
+    {
+      "file": "neg_neg-a01-field-order-drift.json",
+      "expect": "REJECT",
+      "reason": "recompute_mismatch",
+      "failure_mode": "field_order_drift"
+    },
+    {
+      "file": "neg_neg-b01-epoch-integer.json",
+      "expect": "REJECT",
+      "reason": "grammar_reject",
+      "failure_mode": "timestamp_form_drift"
+    },
+    {
+      "file": "neg_neg-c01-scope-changed.json",
+      "expect": "REJECT",
+      "reason": "recompute_mismatch",
+      "failure_mode": "field_value_drift"
+    }
+  ]
+}

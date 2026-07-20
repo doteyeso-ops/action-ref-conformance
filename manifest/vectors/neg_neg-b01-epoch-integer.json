@@ -1,0 +1,12 @@
+{
+  "id": "neg-b01-epoch-integer",
+  "failure_mode": "timestamp_form_drift",
+  "invocation_payload": {
+    "action_type": "payment.send",
+    "agent_id": "vibes-agent-y",
+    "scope": "vibes:bilateral",
+    "timestamp": 1783166400
+  },
+  "claimed_action_ref": "0000000000000000000000000000000000000000000000000000000000000000",
+  "correct_action_ref": null
+}

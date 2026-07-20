@@ -1,0 +1,12 @@
+{
+  "id": "neg-c01-scope-changed",
+  "failure_mode": "field_value_drift",
+  "invocation_payload": {
+    "action_type": "stateful.write",
+    "agent_id": "vibes-agent-z",
+    "scope": "vibes:memory-exfil-guard",
+    "timestamp": "2026-07-20T09:00:00.000Z"
+  },
+  "claimed_action_ref": "9ef4888b7c6f3cc403c123c1100b63e8e296952275c9ddd08d137cd2deed95a4",
+  "correct_action_ref": "f6c0945f1d5e42147dc52ef3be57134654b31dab2919e85283502fdfc7615438"
+}

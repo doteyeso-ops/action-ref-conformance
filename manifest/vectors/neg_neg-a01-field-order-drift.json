@@ -1,0 +1,12 @@
+{
+  "id": "neg-a01-field-order-drift",
+  "failure_mode": "field_order_drift",
+  "invocation_payload": {
+    "action_type": "payment.send",
+    "agent_id": "vibes-agent-x",
+    "scope": "vibes:bilateral",
+    "timestamp": "2026-07-11T12:00:00.000Z"
+  },
+  "claimed_action_ref": "4453156c44de69a8e0c10d512db8f80a37d7753e93f656a7794523302bacf6ef",
+  "correct_action_ref": "0c24aa05689e6b0d87cc5deb3a6a094f970d5fb78a9c812e73b909f6626b6aed"
+}

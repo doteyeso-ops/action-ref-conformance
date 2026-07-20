@@ -1,0 +1,10 @@
+{
+  "id": "0001-vibes-baseline",
+  "preimage": {
+    "action_type": "payment.settle",
+    "agent_id": "vibes-observer-001",
+    "scope": "vibes:idempotency-guard",
+    "timestamp": "2026-07-20T00:00:00.000Z"
+  },
+  "action_ref": "561a0dd0bbeb59b522747a9cbadfa950a114604dccd8d579272211be8365d373"
+}
