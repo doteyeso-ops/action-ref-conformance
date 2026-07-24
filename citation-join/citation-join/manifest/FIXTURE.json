@@ -1,0 +1,6 @@
+{
+  "hmac_secret": "citation-join-fixture-hmac-not-prod",
+  "ed25519_seed_hex": "1111111111111111111111111111111111111111111111111111111111111111",
+  "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA0EqyMnQrtKs6E2i9RhXk5tAiSrcaAWuvhSCjMsl3hzc=\n-----END PUBLIC KEY-----\n",
+  "warning": "Fixture only \u2014 not Vibes production signing material."
+}

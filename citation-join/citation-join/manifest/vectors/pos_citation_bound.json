@@ -1,0 +1,13 @@
+{
+  "agent_id": "gv-agent",
+  "action": "peer.settle",
+  "payload_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "nonce": "gv-cite-0001",
+  "quote": "quote-2",
+  "issued_at": "2026-07-24T16:00:00.000Z",
+  "receipt_type": "raw",
+  "decision_ref": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "signature": "915443eb8189e00bc7b45d8d136b6ea5fba5d3151a485c615bb04df71cea5748",
+  "ed25519_signature": "ajNt3BmcoUno3rkSbXESaI+6Y95fQ3N/TLFk+g9mQrQHGdJrcOjzv9s/oEAS1eV9du7z8Zx7sXBHQ/sP2fU+Cw==",
+  "algorithm": "HMAC-SHA256+Ed25519"
+}

@@ -1,0 +1,13 @@
+{
+  "agent_id": "gv-agent",
+  "action": "peer.settle.TAMPERED",
+  "payload_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "nonce": "gv-raw-0001",
+  "quote": "quote-1",
+  "issued_at": "2026-07-24T16:00:00.000Z",
+  "receipt_type": "raw",
+  "signature": "5597c5915a9c5c451486138f56690f978f6396dc75a360f59c6a73eb1bcf21de",
+  "ed25519_signature": "LCQMPxpHEDNu3VfNR/8g8LqiG1x2Su8QJdGBBuicDA7nl8L4xSonGiS0c2ap1M41WcyFQNPafGH3t2sHAhC7Dw==",
+  "algorithm": "HMAC-SHA256+Ed25519",
+  "attack": "field_tamper_action"
+}
