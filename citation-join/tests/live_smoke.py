@@ -4,9 +4,9 @@
 Does NOT mint (action-receipt is paid). Checks:
   - public-key 200
   - verify malformed body 400
-  - verify fixture positive against PROD key → signature_invalid / valid=false
-    (proves endpoint is up; fixture key ≠ prod)
-  - verify with missing fields 400
+  - verify fixture positive against PROD key -> signature_invalid / valid=false
+    (proves endpoint is up; fixture key != prod)
+  - unpaid mint -> 402
 
     python3 tests/live_smoke.py
 """
@@ -55,7 +55,7 @@ def main() -> int:
     else:
         print(f"[ok] public-key 200 ({pk.get('algorithm')})")
 
-    st, bad = http("POST", "/action-receipt/verify", {"agent_id": "x"})
+    st, _bad = http("POST", "/action-receipt/verify", {"agent_id": "x"})
     if st != 400:
         failures.append(f"verify malformed want 400 got {st}")
     else:
@@ -66,7 +66,7 @@ def main() -> int:
     if st != 200 or not isinstance(out, dict):
         failures.append(f"verify fixture against prod: {st}")
     else:
-        # Fixture key ≠ prod → must not join_ok
+        # Fixture key != prod -> must not join_ok
         if out.get("valid") is True and out.get("signature_valid") is True:
             failures.append("fixture unexpectedly verified under prod key")
         else:
@@ -75,7 +75,7 @@ def main() -> int:
                 f"sig={out.get('signature_valid')} (expected false - key mismatch)"
             )
 
-    st, mint = http(
+    st, _mint = http(
         "POST",
         "/action-receipt",
         {
@@ -88,7 +88,7 @@ def main() -> int:
     if st != 402:
         failures.append(f"unpaid mint want 402 got {st}")
     else:
-        print("[ok] unpaid mint → 402 (paid surface; use offline vectors)")
+        print("[ok] unpaid mint -> 402 (paid surface; use offline vectors)")
 
     if failures:
         print("FAIL:\n  " + "\n  ".join(failures), file=sys.stderr)
