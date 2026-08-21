@@ -116,6 +116,23 @@ def main(path):
     check("D.childSig", ed25519_ok(keys["agent-subject"]["publicKeyB64url"], (ch["v"]+"\n"+jc).encode(), de["childSig"]), True)
     check("D.rootIssuer", de["rootIssuer"], keys["issuer"]["publicKeyB64url"])
 
+    # Under-report refusal — DERIVED from whawk46's scenario (not read from any boolean).
+    # settled artifact shows amount 1000000, presented says 1, against Model A (per-payment 250000).
+    ma = V["modelA"]["mandate"]
+    scenario_settled = {"payer": ma["subject"], "recipient": "merchant.example", "asset": "FCUSD", "amount": "1000000"}
+    def authorize(md, pay):
+        reasons = []
+        if int(pay["amount"]) > int(md.get("perPayment", md.get("cap", "0"))):
+            reasons.append("per_payment_exceeded")
+        if pay["recipient"] not in md.get("recipients", []): reasons.append("recipient")
+        if pay["asset"] != md.get("asset"): reasons.append("asset")
+        if pay["payer"] != md.get("subject"): reasons.append("payer")
+        return reasons
+    presented_ok = not authorize(ma, {**scenario_settled, "amount": "1"})
+    settled_ok = not authorize(ma, scenario_settled)
+    check("SEC.underreport.presented-authorizes", presented_ok, True)
+    check("SEC.underreport.settled-refused", settled_ok, False)
+
     print("=== x402 authority vectors — independent cross-check ===")
     npass = 0
     for name, tag in P:
